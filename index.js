@@ -200,6 +200,7 @@ export default class VideoPlayer extends React.Component {
         playsInSilentModeIOS: true,
         shouldDuckAndroid: true,
         interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
+        playThroughEarpieceAndroid: true,
       });
     } catch (e) {
       this.props.errorCallback({
@@ -634,8 +635,8 @@ export default class VideoPlayer extends React.Component {
             }}
             onPlaybackStatusUpdate={this._playbackCallback.bind(this)}
             style={{
-              width: videoWidth,
-              height: videoHeight,
+              width: this.props.widthOverride || videoWidth,
+              height: this.props.heightOverride || videoHeight,
             }}
             {...otherVideoProps}
           />
