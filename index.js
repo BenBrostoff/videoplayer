@@ -536,7 +536,7 @@ export default class VideoPlayer extends React.Component {
   };
 
   render() {
-    const videoWidth = Dimensions.get('window').width;
+    const videoWidth = this.props.videoWidthOverride || Dimensions.get('window').width;
     const videoHeight = videoWidth * (9 / 16);
     const centeredContentWidth = 60;
 
@@ -635,8 +635,8 @@ export default class VideoPlayer extends React.Component {
             }}
             onPlaybackStatusUpdate={this._playbackCallback.bind(this)}
             style={{
-              width: this.props.widthOverride || videoWidth,
-              height: this.props.heightOverride || videoHeight,
+              width: videoWidth,
+              height: videoHeight,
             }}
             {...otherVideoProps}
           />
